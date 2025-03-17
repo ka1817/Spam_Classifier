@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  fastapi:
+    build:
+      context: .  # ✅ Correct: Use the current directory (spam_classifier)
+      dockerfile: Dockerfile.fastapi
+    ports:
+      - "8000:8000"
+    restart: always
+    networks:
+      - app_network
+
+  streamlit:
+    build:
+      context: .  # ✅ Correct: Use the current directory (spam_classifier)
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      - fastapi
+    restart: always
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

@@ -1,0 +1,21 @@
+# Ignore Python cache and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.env
+
+# Ignore Jupyter notebooks output
+.ipynb_checkpoints/
+*.ipynb
+
+# Ignore model files (optional), but allow `nb.pkl`
+*.h5
+*.onnx
+!nb.pkl  # ✅ This ensures nb.pkl is included in the Docker image
+
+# Ignore logs and temporary files
+logs/
+*.log
+tmp/
